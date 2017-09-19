@@ -48,3 +48,8 @@ sed 's/Sample_ID/SNP_ID/' teosinte_transposed.txt > teosinte_correct_headers.txt
 #The genotype and SNP position files can now be joined via column 1
 join -1 1 -2 1 cut_snps_sorted.txt maize_sorted.txt > maize_joined.txt
 join -1 1 -2 1 cut_snps_sorted.txt teosinte_sorted.txt > teosinte_joined.txt
+
+## Day 2 workflow
+Changed joined files to tab-delimited format
+join -t $'\t' -1 1 -2 1 cut_snps_sorted.txt maize_sorted.txt > maize_joined.txt
+join -t $'\t' -1 1 -2 1 cut_snps_sorted.txt teosinte_sorted.txt > teosinte_joined.txt
