@@ -50,6 +50,20 @@ join -1 1 -2 1 cut_snps_sorted.txt maize_sorted.txt > maize_joined.txt
 join -1 1 -2 1 cut_snps_sorted.txt teosinte_sorted.txt > teosinte_joined.txt
 
 ## Day 2 workflow
-Changed joined files to tab-delimited format
+
+#Changed joined files to tab-delimited format
 join -t $'\t' -1 1 -2 1 cut_snps_sorted.txt maize_sorted.txt > maize_joined.txt
 join -t $'\t' -1 1 -2 1 cut_snps_sorted.txt teosinte_sorted.txt > teosinte_joined.txt
+
+#made directories for maize and teosinte chromosome files and moved the joined files in
+mkdir maize_files
+mkdir teosinte_files
+cp maize_joined.txt maize_files/
+cp teosinte_joined.txt teosinte/files
+
+#Create files for each chromosome in maize and teosinte
+  #create and sort ascending files
+for chr in {1..10}; do awk -v awk_chr=$chr '{ if ($2==awk_chr || $1=="SNP_ID") print $0}' teosinte_joined.txt | sort -t $'\t' -k3n > teosinte.chr$chr; done
+for chr in {1..10}; do awk -v awk_chr=$chr '{ if ($2==awk_chr || $1=="SNP_ID") print $0}' maize_joined.txt | sort -t $'\t' -k3n > maize.chr$chr; done
+  #create and sort descending files
+  
