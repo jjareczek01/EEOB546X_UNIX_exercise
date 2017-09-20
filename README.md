@@ -110,3 +110,19 @@ head -n 1 teosinte_joined.txt > teosinte_unknown.txt | grep "unknown" teosinte_j
 head -n 1 maize_joined.txt > maize_multiple.txt | grep "multiple" maize_joined.txt >> maize_multiple.txt
 
 head -n 1 teosinte_joined.txt > teosinte_multiple.txt | grep "multiple" teosinte_joined.txt >> teosinte_multiple.txt
+
+#getting file size information and wordcount info from ascending and descending directories
+
+du -h maize_ascending.chr* > maize_ascending.info | wc maize_ascending.chr* >> maize_ascending.info
+
+du -h maize_descending.chr* > maize_descending.info | wc maize_descending.chr* >> maize_descending.info
+
+du -h teosinte_ascending.chr* > teosinte_ascending.info | wc teosinte_ascending.chr* >> teosinte_ascending.info
+
+du -h teosinte_descending.chr* > teosinte_descending.info | wc teosinte_descending.chr* >> teosinte_descending.info
+
+#getting file size info from the unknown, multiple, and joined files in higher directories
+
+du -h \*.txt > maize.info | wc \*.txt >> maize.info
+
+du -h \*.txt > teosinte.info | wc \*.txt >> teosinte.info
