@@ -104,3 +104,9 @@ for chr in {1..10}; do awk -v awk_chr=$chr '{ if ($2==awk_chr || $1=="SNP_ID") p
 head -n 1 maize_joined.txt > maize_unknown.txt | grep "unknown" maize_joined.txt >> maize_unknown.txt
 
 head -n 1 teosinte_joined.txt > teosinte_unknown.txt | grep "unknown" teosinte_joined.txt >> teosinte_unknown.txt
+
+#pulling out SNPs with multiple locations
+
+head -n 1 maize_joined.txt > maize_multiple.txt | grep "multiple" maize_joined.txt >> maize_multiple.txt
+
+head -n 1 teosinte_joined.txt > teosinte_multiple.txt | grep "multiple" teosinte_joined.txt >> teosinte_multiple.txt
